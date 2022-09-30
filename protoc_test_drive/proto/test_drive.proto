@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+  package coolcars;
+
+  message Car {
+      string make = 1;
+      string mode = 2;
+      int32 year = 3;
+      string VIN = 4;
+  }
+
+  message CarRequest {
+      string VIN = 1;
+  }
+
+  service CoolCarService {
+       rpc GetCar (CarRequest) returns (Car) {}
+  }
