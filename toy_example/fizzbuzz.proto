@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package fizzbuzz;
+
+message FizzBuzzDFRequest {
+	string df = 1;
+}
+
+message FizzBuzzDFReply {
+	string col_name = 1;
+}
+
+service Computator {
+	rpc ComputeFizzBuzz (FizzBuzzDFRequest) returns (FizzBuzzDFReply) {}
+}
