@@ -22,9 +22,11 @@ def run_client():
             response = stub.ComputeFizzBuzz(fizzbuzz_pb2.FizzBuzzDFRequest(col_name="toy_example"))
         # we print the response as a table in html. Thus, we have to replace '/n' with '<br>'
         print("Client received the following response:")
-        return bytes(str(response), "utf-8").decode("unicode_escape").replace('\n', '<br>')
+        # return response as cleaned html code
+        response = bytes(str(response), "utf-8").decode("unicode_escape").replace('df: "', '').replace('"', '')
+        return "<h1>Client Received:</h1>" + response
     except Exception as e:
-        return "ERROR\n" + str(e)
+        return "<h1>ERROR</h1>" + str(e)
 
 
 if __name__ == '__main__':

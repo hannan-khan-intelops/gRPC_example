@@ -33,8 +33,8 @@ class Computator(fizzbuzz_pb2_grpc.ComputatorServicer):
         # only this time, it can do extra stuff, like create and edit a dataframe.
         df = pd.DataFrame()
         df[request.col_name] = fizzbuzz()
-        # we will return the string of the dataframe.
-        return fizzbuzz_pb2.FizzBuzzDFReply(df=df.head().to_markdown())
+        # we will return the html string of the dataframe.
+        return fizzbuzz_pb2.FizzBuzzDFReply(df=df.to_html())
 
 
 def serve():
